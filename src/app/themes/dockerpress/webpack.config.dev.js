@@ -1,25 +1,31 @@
 const path = require('path')
-const CleanWebpackPlugin = require('clean-webpack-plugin').CleanWebpackPlugin
-const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
+const TerserPlugin = require("terser-webpack-plugin");
+
 const styleHandler = MiniCssExtractPlugin.loader
 
 module.exports = {
   mode: 'development',
   context: path.resolve(__dirname, 'assets'),
+  entry: './src/index.ts',
   output: {
-    filename: 'main.bundle.js',
+    filename: 'bundle.js',
     path: path.resolve(__dirname, 'assets/dist')
   },
-  plugins: [
-    new MiniCssExtractPlugin({
-      filename: 'main.bundle.css'
-    })
-  ],
+
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js'],
+  },
+  
   watch: true,
+
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
+      },
       {
         test: /\.css$/i,
         include: path.resolve(__dirname, 'assets/src'),
@@ -40,5 +46,15 @@ module.exports = {
         ],
       },
     ],
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'bundle.css'
+    })
+  ],
+  optimization: {
+    minimizer: [
+      new CssMinimizerPlugin(),
+    ]
   }
 }

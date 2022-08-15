@@ -2,7 +2,7 @@
   "name": "dockerpress-theme",
   "version": "1.0.0",
   "description": "Simple theme for DockerPress",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "dev": "webpack --config webpack.config.dev.js",
     "build": "webpack --config webpack.config.prod.js"
@@ -15,6 +15,7 @@
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.1",
+    "css-minimizer-webpack-plugin": "^4.0.0",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.6.1",
     "postcss": "^8.4.16",
@@ -23,6 +24,7 @@
     "prettier": "^2.7.1",
     "style-loader": "^3.3.1",
     "tailwindcss": "^3.1.8",
+    "terser-webpack-plugin": "^5.3.4",
     "ts-loader": "^9.3.1",
     "tsconfig-paths-webpack-plugin": "^4.0.0",
     "tslint": "^6.1.3",

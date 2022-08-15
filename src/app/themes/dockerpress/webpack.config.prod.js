@@ -1,23 +1,24 @@
-const path = require('path')
+const { merge } = require('webpack-merge')
+const TerserPlugin = require("terser-webpack-plugin");
+const common = require('./webpack.config.dev.js')
 
-module.exports = {
-  mode: 'development',
-  context: path.resolve(__dirname, 'assets'),
-  output: {
-    filename: 'main.bundle.js',
-    path: path.resolve(__dirname, 'assets/dist')
-  },
-  watch: true,
+module.exports = merge(common, {
+  mode: 'production',
   module: {
-
-  
     rules: [
       {
-        test: /\.css$/i,
-        include: path.resolve(__dirname, 'assets/src'),
-        use: ['style-loader', 'css-loader', 'postcss-loader'],
-      },
-    ],
+        test: /\.ts$/,
+        enforce: 'pre',
+        loader: 'ts-loader',
+        options: {
+          configFile: 'tsconfig.prod.json'
+        }
+      }
+    ]
+  },
+  optimization: {
+    minimizer: [
+      new TerserPlugin()
+    ]
   }
-
-}
+});
