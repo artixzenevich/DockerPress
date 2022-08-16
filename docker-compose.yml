@@ -1,12 +1,13 @@
 version: '3.3'
 
 services:
-  wordpress: 
+  wp: 
+    container_name: ${NAME}-wp
     image: wordpress:${WP_VERSION}
     ports: 
       - 5000:80
+    user: 1000:1000
     environment:
-      WP_VERSION:
       WORDPRESS_DB_HOST: db
       WORDPRESS_DB_USER: ${DB_USER}
       WORDPRESS_DB_PASSWORD: ${DB_PASS}
@@ -14,8 +15,29 @@ services:
     volumes:
       - ./src/app:/var/www/html/wp-content
       - ./src/wp:/var/www/html
+    networks:
+      - project
+
+  cli:
+    container_name: ${NAME}-cli
+    image: wordpress:cli
+    user: 1000:1000
+    command: tail -f /dev/null
+    volumes:
+      - ./src/app:/var/www/html/wp-content
+      - ./src/wp:/var/www/html
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: ${DB_USER}
+      WORDPRESS_DB_PASSWORD: ${DB_PASS}
+      WORDPRESS_DB_NAME: ${DB_NAME}
+    depends_on:
+      - wp
+    networks:
+      - project
 
   db:
+    container_name: ${NAME}-db
     image: mysql:5.7
     environment:
       MYSQL_DATABASE: ${DB_NAME}
@@ -24,11 +46,18 @@ services:
       MYSQL_ROOT_PASSWORD: ${DB_PASS_ROOT}
     volumes:
       - ./mysql:/var/lib/mysql/
-  
+    networks:
+      - project
+
   phpmyadmin:
+    container_name: ${NAME}-phpmyadmin
     image: phpmyadmin
     depends_on:
       - db
     ports:
       - 8081:80
+    networks:
+      - project
 
+networks:
+  project:
