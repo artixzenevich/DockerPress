@@ -1,2 +1,6 @@
 .env
 .idea
+wp
+node_modules
+temp
+mysql
