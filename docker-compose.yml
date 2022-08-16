@@ -6,7 +6,6 @@ services:
     image: wordpress:${WP_VERSION}
     ports: 
       - 5000:80
-    user: 1000:1000
     environment:
       WORDPRESS_DB_HOST: db
       WORDPRESS_DB_USER: ${DB_USER}
@@ -15,24 +14,6 @@ services:
     volumes:
       - ./src/app:/var/www/html/wp-content
       - ./src/wp:/var/www/html
-    networks:
-      - project
-
-  cli:
-    container_name: ${NAME}-cli
-    image: wordpress:cli
-    user: 1000:1000
-    command: tail -f /dev/null
-    volumes:
-      - ./src/app:/var/www/html/wp-content
-      - ./src/wp:/var/www/html
-    environment:
-      WORDPRESS_DB_HOST: db
-      WORDPRESS_DB_USER: ${DB_USER}
-      WORDPRESS_DB_PASSWORD: ${DB_PASS}
-      WORDPRESS_DB_NAME: ${DB_NAME}
-    depends_on:
-      - wp
     networks:
       - project
 
