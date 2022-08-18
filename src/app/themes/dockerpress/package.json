@@ -32,7 +32,6 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
-    "browser-sync-webpack-plugin": "^2.3.0",
-    "D": "^1.0.0"
+    "browser-sync-webpack-plugin": "^2.3.0"
   }
 }
