@@ -4,3 +4,4 @@ wp
 node_modules
 temp
 mysql
+vendor

@@ -1,0 +1,36 @@
+{
+    "name": "artix/dockerpress-composer",
+    "description": "My Zoo",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Artix\\DockerpressComposer\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Artik Zenevich",
+            "email": "azenevich91@gmail.com"
+        }
+    ],
+    "repositories":[
+        {
+            "type":"composer",
+            "url":"https://wpackagist.org"
+        }
+    ],
+    "extra": {
+        "installer-paths": {
+            "app/plugins/{$name}/": ["type:wordpress-plugin"],
+            "app/themes/{$name}/": ["type:wordpress-theme"]
+        }
+    },
+    "require": {
+        "tharindu-wj/unyson-plugin": "^2.7"
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true
+        }
+    }
+}

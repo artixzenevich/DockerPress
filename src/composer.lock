@@ -1,0 +1,61 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "1bceb7fac8f36ef0978579aaaa864895",
+    "packages": [
+        {
+            "name": "tharindu-wj/unyson-plugin",
+            "version": "v2.7.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tharindu-wj/Unyson.git",
+                "reference": "5a6bb12f7d4e65ce9a564bed0082eec5b3cf39a3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tharindu-wj/Unyson/zipball/5a6bb12f7d4e65ce9a564bed0082eec5b3cf39a3",
+                "reference": "5a6bb12f7d4e65ce9a564bed0082eec5b3cf39a3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "type": "wordpress-plugin",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Tharindu Wickramasinghe",
+                    "email": "tharinduwjh@gmail.com",
+                    "homepage": "https://github.com/tharindu-wj/Unyson"
+                }
+            ],
+            "description": "unyson framework for WordPress",
+            "keywords": [
+                "composer",
+                "unyson",
+                "wordpress",
+                "wp"
+            ],
+            "support": {
+                "issues": "https://github.com/tharindu-wj/Unyson/issues",
+                "source": "https://github.com/tharindu-wj/Unyson/tree/master"
+            },
+            "time": "2019-02-05T11:04:24+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
+}

@@ -1,0 +1,24 @@
+{
+  "name": "e25-base/unyson-plugin",
+  "type": "wordpress-plugin",
+  "license": ["GPL-2.0"],
+  
+  "description": "unyson framework for WordPress",
+  "authors": [
+    {
+      "name": "Tharindu Wickramasinghe",
+      "email": "tharinduwjh@gmail.com",
+      "homepage": "https://github.com/tharindu-wj/Unyson"
+    }
+  ],
+  "keywords": [
+    "wordpress", "composer","wp","unyson"
+  ],
+  
+  "require": {
+    "php": ">=5.6" 
+  },
+  "scripts": {
+}
+  
+}
