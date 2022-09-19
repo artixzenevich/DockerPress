@@ -1,4 +1,4 @@
-# UCSOL DEV
+# DockerPress
 
 ## Установка и запуск
 
