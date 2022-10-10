@@ -12,8 +12,8 @@ services:
       WORDPRESS_DB_PASSWORD: ${DB_PASS}
       WORDPRESS_DB_NAME: ${DB_NAME}
     volumes:
-      - ./src/app:/var/www/html/wp-content
-      - ./src/wp:/var/www/html
+      - ./app:/var/www/html/wp-content
+      - ./docker/wordpress:/var/www/html
     networks:
       - project
 
@@ -26,7 +26,7 @@ services:
       MYSQL_PASSWORD: ${DB_PASS}
       MYSQL_ROOT_PASSWORD: ${DB_PASS_ROOT}
     volumes:
-      - ./mysql:/var/lib/mysql/
+      - ./docker/mysql:/var/lib/mysql/
     networks:
       - project
 
