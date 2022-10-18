@@ -1,5 +1,5 @@
 module.exports = {
-  content: ['./app/themes/dockerpress/*.php'],
+  content: ['./app/themes/dockerpress/**/*.php'],
   theme: {
     extend: {},
   },
