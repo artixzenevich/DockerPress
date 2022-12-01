@@ -8,39 +8,39 @@
  *
  * @link https://developer.wordpress.org/themes/functionality/custom-headers/
  *
- * @package dockerpress
+ * @package theme
  */
 
 /**
  * Set up the WordPress core custom header feature.
  *
- * @uses dockerpress_header_style()
+ * @uses theme_header_style()
  */
-function dockerpress_custom_header_setup() {
+function theme_custom_header_setup() {
 	add_theme_support(
 		'custom-header',
 		apply_filters(
-			'dockerpress_custom_header_args',
+			'theme_custom_header_args',
 			array(
 				'default-image'      => '',
 				'default-text-color' => '000000',
 				'width'              => 1000,
 				'height'             => 250,
 				'flex-height'        => true,
-				'wp-head-callback'   => 'dockerpress_header_style',
+				'wp-head-callback'   => 'theme_header_style',
 			)
 		)
 	);
 }
-add_action( 'after_setup_theme', 'dockerpress_custom_header_setup' );
+add_action( 'after_setup_theme', 'theme_custom_header_setup' );
 
-if ( ! function_exists( 'dockerpress_header_style' ) ) :
+if ( ! function_exists( 'theme_header_style' ) ) :
 	/**
 	 * Styles the header image and text displayed on the blog.
 	 *
-	 * @see dockerpress_custom_header_setup().
+	 * @see theme_custom_header_setup().
 	 */
-	function dockerpress_header_style() {
+	function theme_header_style() {
 		$header_text_color = get_header_textcolor();
 
 		/*

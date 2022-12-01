@@ -4,7 +4,7 @@
  *
  * @link https://jetpack.com/
  *
- * @package dockerpress
+ * @package theme
  */
 
 /**
@@ -14,13 +14,13 @@
  * See: https://jetpack.com/support/responsive-videos/
  * See: https://jetpack.com/support/content-options/
  */
-function dockerpress_jetpack_setup() {
+function theme_jetpack_setup() {
 	// Add theme support for Infinite Scroll.
 	add_theme_support(
 		'infinite-scroll',
 		array(
 			'container' => 'main',
-			'render'    => 'dockerpress_infinite_scroll_render',
+			'render'    => 'theme_infinite_scroll_render',
 			'footer'    => 'page',
 		)
 	);
@@ -33,7 +33,7 @@ function dockerpress_jetpack_setup() {
 		'jetpack-content-options',
 		array(
 			'post-details' => array(
-				'stylesheet' => 'dockerpress-style',
+				'stylesheet' => 'theme-style',
 				'date'       => '.posted-on',
 				'categories' => '.cat-links',
 				'tags'       => '.tags-links',
@@ -48,13 +48,13 @@ function dockerpress_jetpack_setup() {
 		)
 	);
 }
-add_action( 'after_setup_theme', 'dockerpress_jetpack_setup' );
+add_action( 'after_setup_theme', 'theme_jetpack_setup' );
 
-if ( ! function_exists( 'dockerpress_infinite_scroll_render' ) ) :
+if ( ! function_exists( 'theme_infinite_scroll_render' ) ) :
 	/**
 	 * Custom render function for Infinite Scroll.
 	 */
-	function dockerpress_infinite_scroll_render() {
+	function theme_infinite_scroll_render() {
 		while ( have_posts() ) {
 			the_post();
 			if ( is_search() ) :

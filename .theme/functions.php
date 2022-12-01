@@ -1,10 +1,10 @@
 <?php
 /**
- * dockerpress functions and definitions
+ * theme functions and definitions
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package dockerpress
+ * @package theme
  */
 
 if ( ! defined( '_S_VERSION' ) ) {
@@ -19,14 +19,14 @@ if ( ! defined( '_S_VERSION' ) ) {
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
-function dockerpress_setup() {
+function theme_setup() {
 	/*
 		* Make theme available for translation.
 		* Translations can be filed in the /languages/ directory.
-		* If you're building a theme based on dockerpress, use a find and replace
-		* to change 'dockerpress' to the name of your theme in all the template files.
+		* If you're building a theme based on theme, use a find and replace
+		* to change 'theme' to the name of your theme in all the template files.
 		*/
-	load_theme_textdomain( 'dockerpress', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'theme', get_template_directory() . '/languages' );
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
@@ -49,7 +49,7 @@ function dockerpress_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
-			'menu-1' => esc_html__( 'Primary', 'dockerpress' ),
+			'menu-1' => esc_html__( 'Primary', 'theme' ),
 		)
 	);
 
@@ -74,7 +74,7 @@ function dockerpress_setup() {
 	add_theme_support(
 		'custom-background',
 		apply_filters(
-			'dockerpress_custom_background_args',
+			'theme_custom_background_args',
 			array(
 				'default-color' => 'ffffff',
 				'default-image' => '',
@@ -100,7 +100,7 @@ function dockerpress_setup() {
 		)
 	);
 }
-add_action( 'after_setup_theme', 'dockerpress_setup' );
+add_action( 'after_setup_theme', 'theme_setup' );
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -109,22 +109,22 @@ add_action( 'after_setup_theme', 'dockerpress_setup' );
  *
  * @global int $content_width
  */
-function dockerpress_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'dockerpress_content_width', 640 );
+function theme_content_width() {
+	$GLOBALS['content_width'] = apply_filters( 'theme_content_width', 640 );
 }
-add_action( 'after_setup_theme', 'dockerpress_content_width', 0 );
+add_action( 'after_setup_theme', 'theme_content_width', 0 );
 
 /**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function dockerpress_widgets_init() {
+function theme_widgets_init() {
 	register_sidebar(
 		array(
-			'name'          => esc_html__( 'Sidebar', 'dockerpress' ),
+			'name'          => esc_html__( 'Sidebar', 'theme' ),
 			'id'            => 'sidebar-1',
-			'description'   => esc_html__( 'Add widgets here.', 'dockerpress' ),
+			'description'   => esc_html__( 'Add widgets here.', 'theme' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
@@ -132,23 +132,22 @@ function dockerpress_widgets_init() {
 		)
 	);
 }
-add_action( 'widgets_init', 'dockerpress_widgets_init' );
+add_action( 'widgets_init', 'theme_widgets_init' );
 
 /**
  * Enqueue scripts and styles.
  */
-function dockerpress_scripts() {
-	wp_enqueue_style('dockerpress-style', get_stylesheet_directory_uri() . '/assets/dist/bundle.css', [], '1.0.0', 'all');
-	wp_style_add_data( 'dockerpress-style', 'rtl', 'replace' );
+function theme_scripts() {
+	wp_enqueue_style( 'theme-style', get_stylesheet_uri(), array(), _S_VERSION );
+	wp_style_add_data( 'theme-style', 'rtl', 'replace' );
 
-	wp_enqueue_script('dockerpress-script', get_stylesheet_directory_uri() . '/assets/dist/bundle.js', [], '1.0.0', true);
-	wp_enqueue_script( 'dockerpress-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'dockerpress_scripts' );
+add_action( 'wp_enqueue_scripts', 'theme_scripts' );
 
 /**
  * Implement the Custom Header feature.
