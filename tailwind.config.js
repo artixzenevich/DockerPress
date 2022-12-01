@@ -1,5 +1,9 @@
+require('dotenv').config()
+
+const theme = process.env.THEME
+
 module.exports = {
-  content: ['./app/themes/dockerpress/**/*.php'],
+  content: [`./themes/${theme}/**/*.php`],
   theme: {
     extend: {},
   },

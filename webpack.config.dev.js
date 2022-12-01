@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
@@ -5,13 +7,15 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 
 const styleHandler = MiniCssExtractPlugin.loader
 
+const theme = process.env.THEME
+
 module.exports = {
   mode: 'development',
-  context: path.resolve(__dirname, 'app'),
-  entry: './themes/dockerpress/assets/src/index.ts',
+  context: path.resolve(__dirname, 'themes'),
+  entry: `./${theme}/assets/src/index.ts`,
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, './app/themes/dockerpress/assets/dist')
+    path: path.resolve(__dirname, `./themes/${theme}/assets/dist`)
   },
 
   devtool: 'source-map',
@@ -19,7 +23,7 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
   },
-  
+
   watch: true,
 
   module: {
@@ -30,10 +34,10 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        include: path.resolve(__dirname, './app/themes/dockerpress/assets/src'),
+        include: path.resolve(__dirname, `./themes/${theme}/assets/src`),
         use: [
           styleHandler,
-          'css-loader', 
+          'css-loader',
           {
             loader: 'postcss-loader',
             options: {
@@ -55,16 +59,16 @@ module.exports = {
       notify: true,
       proxy: 'localhost:5000',
       files: [
-        'app/themes/dockerpress/**/*.php',
-        'app/themes/dockerpress/assets/src/**.*'
+        `themes/${theme}/**/*.php`,
+        `themes/${theme}/assets/src/**.*`
       ],
       watchEvents: ["change", "add"],
       ghostMode: false, // disable sync between devices
     },
-    {
-      reload: false,
-      injectCss: true,
-    }),
+      {
+        reload: false,
+        injectCss: true,
+      }),
     new MiniCssExtractPlugin({
       filename: 'bundle.css'
     })

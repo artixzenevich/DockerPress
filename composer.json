@@ -4,7 +4,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Artix\\DockerpressComposer\\": "app/"
+            "Artix\\DockerpressComposer\\": "/"
         }
     },
     "authors": [
@@ -26,8 +26,6 @@
         }
     },
     "require": {
-        "wpackagist-plugin/unyson": "^2.7",
-        "wpackagist-plugin/redirection": "^5.3",
         "wpackagist-plugin/wordpress-seo": "^19.6"
     },
     "config": {
