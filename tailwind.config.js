@@ -1,9 +1,10 @@
 require('dotenv').config()
 
-const theme = process.env.THEME
+const theme = process.env.PROJECT_NAME
 
 module.exports = {
-  content: [`./themes/${theme}/**/*.php`],
+  mode: 'jit',
+  content: [`./themes/${theme}/**/*.{php, js, ts}`],
   theme: {
     extend: {},
   },

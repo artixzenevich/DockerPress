@@ -7,7 +7,7 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 
 const styleHandler = MiniCssExtractPlugin.loader
 
-const theme = process.env.THEME
+const theme = process.env.PROJECT_NAME
 
 module.exports = {
   mode: 'development',

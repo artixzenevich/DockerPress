@@ -1,6 +1,6 @@
 {
   "name": "dockerpress-theme",
-  "version": "1.2.1",
+  "version": "1.2.3",
   "description": "Simple theme for DockerPress",
   "main": "index.ts",
   "scripts": {
