@@ -2,7 +2,7 @@ version: '3.3'
 
 services:
   wp: 
-    container_name: ${NAME}-wp
+    container_name: ${PROJECT_NAME}-wp
     image: wordpress:${WP_VERSION}
     ports: 
       - 5000:80
@@ -19,7 +19,7 @@ services:
       - project
 
   db:
-    container_name: ${NAME}-db
+    container_name: ${PROJECT_NAME}-db
     image: mysql:5.7
     environment:
       MYSQL_DATABASE: ${DB_NAME}
@@ -32,7 +32,7 @@ services:
       - project
 
   phpmyadmin:
-    container_name: ${NAME}-phpmyadmin
+    container_name: ${PROJECT_NAME}-phpmyadmin
     image: phpmyadmin
     depends_on:
       - db
