@@ -1,7 +1,6 @@
 .env
 .idea
 docker/wordpress
-node_modules
 temp
 docker/mysql
 vendor

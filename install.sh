@@ -1,5 +1,5 @@
 #!/bin/bash
-project_env=("_sd" "version" "user" "pass" "_sdroot")
+project_env=("_sd" "version" "user" "pass" "sdroot")
 questions=(
   "1.Project name:"
   "2.Wordpress version (press 'Enter' for lates version):"
@@ -29,7 +29,7 @@ echo "Want to create a new theme?:(y/n)"
 read new
 
 if [[ $new = 'y' ]]; then
-  echo "New theme "${user_answer[0]}" created in theme/"
+  echo "New theme "${user_answer[0]}" created"
   . theme.sh "${user_answer[0]}"
 elif [[ $new = 'n' ]]; then
   echo "If you want to create a new theme call the script ./theme.sh"
@@ -38,6 +38,8 @@ else
 fi
 
 docker-compose up -d
+cd ${user_answer[0]}
 npm install
+npm run dev
 
 echo "Done!!!"
