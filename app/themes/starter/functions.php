@@ -138,9 +138,10 @@ add_action( 'widgets_init', 'starter_widgets_init' );
  * Enqueue scripts and styles.
  */
 function starter_scripts() {
-	wp_enqueue_style( 'starter-style', get_stylesheet_uri(), array(), _S_VERSION );
+	wp_enqueue_style( 'starter-style', get_template_directory_uri(  ) . '/dist/bundle.css', array(), _S_VERSION );
 	wp_style_add_data( 'starter-style', 'rtl', 'replace' );
 
+	wp_enqueue_script( 'starter-script', get_template_directory_uri() . '/dist/bundle.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'starter-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
