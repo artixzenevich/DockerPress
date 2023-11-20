@@ -9,7 +9,7 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" class="card bg-base-100 shadow-xl my-5">
+<article id="post-<?php the_ID(); ?>" class="card bg-base-100 shadow-xl my-5 w-96">
 	<div class="card-body">
 		<h2 class="card-title">
 			<a href="<?php echo esc_url( get_permalink() )?>"><?php the_title() ?></a>
